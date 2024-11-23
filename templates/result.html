@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            margin: 0;
+            height: 100vh;
+            background: rgb(70, 130, 180);
+            background-size: 400% 400%;
+            animation: colorChange 3s linear infinite;
+        }
+
+        @keyframes colorChange {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #f0f0f0;
+        }
+
+        .metadata {
+            list-style-type: none;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-top: 30px;
+            display: inline-block;
+            text-align: left;
+            border-radius: 8px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .download-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark"></div>
+
+    <h1>File Conversion Result</h1>
+
+    <h2>Metadata</h2>
+    <ul class="metadata">
+        {% for key, value in metadata.items() %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Download PDF</h2>
+    <p class="download-link">
+        <a href="{{ url_for('download_file', filename=pdf_filename) }}" download>Click here to download your PDF</a>
+    </p>
+    
+    <p><a href="/">Convert another file</a></p>
+</body>
+</html>
